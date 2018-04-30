@@ -9,8 +9,8 @@ app.service('Map', function($q) {
             document.getElementById("map"), options
         );
         this.places = new google.maps.places.PlacesService(this.map);
-        this.map.data.loadGeoJson('test.json');
-        this.map.data.setStyle({visible:false});
+        /*this.map.data.loadGeoJson('test.json');
+        this.map.data.setStyle({visible:false});*/
     }
 
     this.search = function(str) {
@@ -34,12 +34,30 @@ app.service('Map', function($q) {
         this.map.setCenter(res.geometry.location);
     }
 
-    this.layer = function(){
-        this.map.data.setStyle({visible:true});
+    this.callDataBase = function(tabState){
+        var res = {};
+        if(tabState[0]){
+            res = "test.json";
+        }else if(tabState[1]){
+            res = "test2.json";
+        }
+        return res;
     }
 
-    this.clear = function(){
-        this.map.data.setStyle({visible:false});
-    }
+    this.layer = function(tabState){
+        /*this.map.data.forEach(function(feature) {
+            this.map.data.remove(feature);
+        });*/
+        //this.map.data.loadGeoJson('empty.json');
+        //this.map.data.setMap(null);
 
+        /*this.map.data.forEach(function(feature) {
+            this.map.data.remove(feature);
+        });*/
+        //this.map.data.remove(feature);
+
+        var response = this.callDataBase(tabState);
+        this.map.data.loadGeoJson(response);
+
+    }
 });

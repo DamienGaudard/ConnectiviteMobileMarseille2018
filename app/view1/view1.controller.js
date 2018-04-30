@@ -1,8 +1,15 @@
 app.controller('newPlaceCtrl', function($scope, Map) {
 
     $scope.place = {};
-    $scope.state = false;
-
+    $scope.tabState = [
+        false, //Bouygues Telecom
+        false, //Free
+        false, //Orange
+        false, //SFR
+        false, //2G
+        false, //3G
+        false  //4G
+    ];
     $scope.search = function() {
         $scope.apiError = false;
         Map.search($scope.searchPlace)
@@ -26,21 +33,26 @@ app.controller('newPlaceCtrl', function($scope, Map) {
 
     Map.init();
 
-    $scope.changeState = function(){
-        console.log($scope.state);
-        $scope.state = !($scope.state);
-        console.log($scope.state);
-        if($scope.state){
-            $scope.displayLayer();
-        }else{
-            $scope.noneDisplayLayer();
+    $scope.changeState = function(state){
+        if(state == "bouyguestelecom"){
+            $scope.tabState[0] = !($scope.tabState[0]);
+        }else if(state == "free"){
+            $scope.tabState[1] = !($scope.tabState[1]);
+        }else if(state == "orange") {
+            $scope.tabState[2] = !($scope.tabState[2]);
+        }else if(state == "sfr"){
+            $scope.tabState[3] = !($scope.tabState[3]);
+        }else if(state == "2g"){
+            $scope.tabState[4] = !($scope.tabState[4]);
+        }else if(state == "3g"){
+            $scope.tabState[5] = !($scope.tabState[5]);
+        }else if(state == "4g"){
+            $scope.tabState[6] = !($scope.tabState[6]);
         }
     }
-    $scope.displayLayer = function(){
-        Map.layer();
+    $scope.display = function(){
+        console.log($scope.tabState);
+        Map.init();
+        Map.layer($scope.tabState);
     }
-    $scope.noneDisplayLayer = function(){
-        Map.clear();
-    }
-
 });
