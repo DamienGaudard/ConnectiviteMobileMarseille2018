@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">-->
   <link rel="stylesheet" href="app.css">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 
 </head>
@@ -37,25 +38,24 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Options mobile <span class="caret"></span></a>
           <ul class="dropdown-menu" >
             <label>Les opérateurs</label>
-              <div class="checkbox">
-                <label><input type="checkbox" value="Bouygues Telecom" id="Bouygues Telecom">Bouygues Telecom</label></br>
-                <label><input type="checkbox" value="free" id="free">Free</label></br>
-                <label><input type="checkbox" value="orange" id="orange">Orange</label></br>
-                <label><input type="checkbox" value="sfr" id="sfr">SFR</label></br>
-                <label><input type="checkbox" value="tous" id="tousOp">Tous</label></br>
-              </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="Bouygues Telecom" id="Bouygues Telecom" ng-click="changeState('bouyguestelecom')">Bouygues Telecom</label></br>
+                <label><input type="checkbox" value="free" id="free" ng-click="changeState('free')">Free</label></br>
+                <label><input type="checkbox" value="orange" id="orange" ng-click="changeState('orange')">Orange</label></br>
+                <label><input type="checkbox" value="sfr" id="sfr" ng-click="changeState('sfr')">SFR</label></br>
+            </div>
             <label>Les fréquences</label>
             <div class="checkbox">
-              <label><input type="checkbox" value="2G" id="2G" ng-click="changeState()">2G</label></br>
-              <label><input type="checkbox" value="3G" id="3G">3G</label></br>
-              <label><input type="checkbox" value="4G" id="4G">4G</label></br>
-              <label><input type="checkbox" value="tous" id="tousFq">Tous</label></br>
+                <label><input type="checkbox" value="2G" id="2G" ng-click="changeState('2g')">2G</label></br>
+                <label><input type="checkbox" value="3G" id="3G" ng-click="changeState('3g')">3G</label></br>
+                <label><input type="checkbox" value="4G" id="4G" ng-click="changeState('4g')">4G</label></br>
             </div>
+            <input type="button" ng-click="display()" value="Valider">
           </ul>
         </li>
       </ul>
       <form name="searchForm" novalidate ng-submit="search()">
-        <div class="input-group" id="searchBar">
+        <div class="input-group pull-right" id="searchBar">
           <input name="place" type="text" class="form-control" placeholder="Entrer votre adresse..." ng-model="searchPlace" required autofocus />
           <span class="input-group-btn">
                 <button class="btn btn-primary" ng-disabled="searchForm.$invalid">Search</button>
