@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" ng-controller="newPlaceCtrl" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" ng-controller="newPlaceCtrl"class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" ng-controller="newPlaceCtrl" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" ng-controller="newPlaceCtrl" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">-->
+  <link rel="stylesheet" href="app.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+
+</head>
+<body>
+
+
+//menu
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span>Menu</span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Options mobile <span class="caret"></span></a>
+          <ul class="dropdown-menu" >
+            <label>Les opérateurs</label>
+              <div class="checkbox">
+                <label><input type="checkbox" value="Bouygues Telecom" id="Bouygues Telecom">Bouygues Telecom</label></br>
+                <label><input type="checkbox" value="free" id="free">Free</label></br>
+                <label><input type="checkbox" value="orange" id="orange">Orange</label></br>
+                <label><input type="checkbox" value="sfr" id="sfr">SFR</label></br>
+                <label><input type="checkbox" value="tous" id="tousOp">Tous</label></br>
+              </div>
+            <label>Les fréquences</label>
+            <div class="checkbox">
+              <label><input type="checkbox" value="2G" id="2G" ng-click="changeState()">2G</label></br>
+              <label><input type="checkbox" value="3G" id="3G">3G</label></br>
+              <label><input type="checkbox" value="4G" id="4G">4G</label></br>
+              <label><input type="checkbox" value="tous" id="tousFq">Tous</label></br>
+            </div>
+          </ul>
+        </li>
+      </ul>
+      <form name="searchForm" novalidate ng-submit="search()">
+        <div class="input-group" id="searchBar">
+          <input name="place" type="text" class="form-control" placeholder="Entrer votre adresse..." ng-model="searchPlace" required autofocus />
+          <span class="input-group-btn">
+                <button class="btn btn-primary" ng-disabled="searchForm.$invalid">Search</button>
+            </span>
+        </div>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+//affichage map
+<div class="contenant">
+
+  <div class="alert alert-danger text-center" role="alert" ng-show="apiError">
+    <b>API Error : </b>
+    <span>{{ apiStatus }}</span>
+  </div>
+  <div id="map"></div>
+</div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd1xMYT1bt99qtFWQEzXiRBvORDWHgPtk&libraries=places"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="app.js"></script>
+<script src="view1/view1.service.js"></script>
+<script src="view1/view1.controller.js"></script>
+
+
+
+</body>
+</html>
